@@ -16,6 +16,12 @@ interface ITask {
 function App() {
   const [tasks, setTasks] = useState<ITask[]>([]);
 
+  const tasksAmount = tasks.length;
+  const tasksCompleted = tasks.reduce(
+    (count, task) => (task.isComplete ? count + 1 : count),
+    0
+  );
+
   function createTask(description: string) {
     const newTask = {
       id: uuidV4(),
@@ -57,10 +63,13 @@ function App() {
         <div className={styles.tasks_container}>
           <div className={styles.stats}>
             <strong>
-              Tarefas criadas <span>5</span>
+              Tarefas criadas <span>{tasksAmount}</span>
             </strong>
             <strong>
-              Concluídas <span>2 de 5</span>
+              Concluídas{" "}
+              <span>
+                {tasksCompleted} de {tasksAmount}
+              </span>
             </strong>
           </div>
 
