@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "./components/Header";
 import { Task } from "./components/Task";
 import { TaskForm } from "./components/TaskForm";
@@ -15,12 +15,33 @@ interface ITask {
 
 function App() {
   const [tasks, setTasks] = useState<ITask[]>([]);
+  const [isLocalStorageLoaded, setIsLocalStorageLoaded] = useState(false);
+
+  useEffect(() => {
+    const tasksAsString = localStorage.getItem("tasks") || "[]";
+    const loadTasks = JSON.parse(tasksAsString);
+
+    setTasks(loadTasks);
+    setIsLocalStorageLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (isLocalStorageLoaded) {
+      saveInLocalStorage();
+    }
+  }, [tasks, isLocalStorageLoaded]);
 
   const tasksAmount = tasks.length;
   const tasksCompleted = tasks.reduce(
     (count, task) => (task.isComplete ? count + 1 : count),
     0
   );
+
+  function saveInLocalStorage() {
+    const tasksAsString = JSON.stringify(tasks);
+
+    localStorage.setItem("tasks", tasksAsString);
+  }
 
   function createTask(description: string) {
     const newTask = {
