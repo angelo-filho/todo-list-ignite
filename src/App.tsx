@@ -1,7 +1,7 @@
-import { Check, PlusCircle, Trash } from "phosphor-react";
 import { useState } from "react";
 import { Header } from "./components/Header";
 import { Task } from "./components/Task";
+import { TaskForm } from "./components/TaskForm";
 
 import styles from "./styles/app.module.scss";
 
@@ -34,19 +34,14 @@ const tasks_data = [
 ];
 
 function App() {
-  const [tasks, useTasks] = useState(tasks_data);
+  const [tasks, setTasks] = useState(tasks_data);
 
   return (
     <div>
       <Header />
 
       <main className={styles.main}>
-        <form className={styles.todo_form} onSubmit={(e) => e.preventDefault()}>
-          <input type="text" placeholder="Adicione uma nova tarefa" />
-          <button type="submit">
-            Criar <PlusCircle size={"1rem"} weight="bold" />
-          </button>
-        </form>
+        <TaskForm />
 
         <div className={styles.tasks_container}>
           <div className={styles.stats}>
