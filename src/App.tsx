@@ -7,6 +7,7 @@ import { v4 as uuidV4 } from "uuid";
 
 import styles from "./styles/app.module.scss";
 import { Empty } from "./components/Empty";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 
 interface ITask {
   id: string;
@@ -16,19 +17,14 @@ interface ITask {
 
 function App() {
   const [tasks, setTasks] = useState<ITask[]>([]);
-  const [isLocalStorageLoaded, setIsLocalStorageLoaded] = useState(false);
-
-  useEffect(() => {
-    const tasksAsString = localStorage.getItem("tasks") || "[]";
-    const loadTasks = JSON.parse(tasksAsString);
-
-    setTasks(loadTasks);
-    setIsLocalStorageLoaded(true);
-  }, []);
+  const { isLocalStorageLoaded, saveInLocalStorage } = useLocalStorage({
+    itemName: "tasks",
+    onLoad: setTasks,
+  });
 
   useEffect(() => {
     if (isLocalStorageLoaded) {
-      saveInLocalStorage();
+      saveInLocalStorage(tasks);
     }
   }, [tasks, isLocalStorageLoaded]);
 
@@ -37,12 +33,6 @@ function App() {
     (count, task) => (task.isComplete ? count + 1 : count),
     0
   );
-
-  function saveInLocalStorage() {
-    const tasksAsString = JSON.stringify(tasks);
-
-    localStorage.setItem("tasks", tasksAsString);
-  }
 
   function createTask(description: string) {
     const newTask = {
