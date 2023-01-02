@@ -7,41 +7,27 @@ import { v4 as uuidV4 } from "uuid";
 
 import styles from "./styles/app.module.scss";
 
-const tasks_data = [
-  {
-    id: uuidV4(),
-    description:
-      "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-    isComplete: false,
-  },
-  {
-    id: uuidV4(),
-    description:
-      "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-    isComplete: false,
-  },
-  {
-    id: uuidV4(),
-    description:
-      "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-    isComplete: false,
-  },
-  {
-    id: uuidV4(),
-    description:
-      "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-    isComplete: true,
-  },
-  {
-    id: uuidV4(),
-    description:
-      "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-    isComplete: true,
-  },
-];
+interface ITask {
+  id: string;
+  description: string;
+  isComplete: boolean;
+}
 
 function App() {
-  const [tasks, setTasks] = useState(tasks_data);
+  const [tasks, setTasks] = useState<ITask[]>([]);
+
+  function createTask(description: string) {
+    const newTask = {
+      id: uuidV4(),
+      description,
+      isComplete: false,
+    };
+
+    const tasksWithTheNewOne = tasks.slice();
+    tasksWithTheNewOne.push(newTask);
+
+    setTasks(tasksWithTheNewOne);
+  }
 
   function toggleTaskCompleteState(id: string) {
     const tasksWithNewTaskState = tasks.map((task) => {
@@ -66,7 +52,7 @@ function App() {
       <Header />
 
       <main className={styles.main}>
-        <TaskForm />
+        <TaskForm onSubmit={createTask} />
 
         <div className={styles.tasks_container}>
           <div className={styles.stats}>
