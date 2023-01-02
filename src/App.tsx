@@ -9,6 +9,7 @@ import styles from "./styles/app.module.scss";
 import { Empty } from "./components/Empty";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { Tasks } from "./components/Tasks";
+import { Stats } from "./components/Stats";
 
 interface ITask {
   id: string;
@@ -74,17 +75,7 @@ function App() {
         <TaskForm onSubmit={createTask} />
 
         <div className={styles.tasks_container}>
-          <div className={styles.stats}>
-            <strong>
-              Tarefas criadas <span>{tasksAmount}</span>
-            </strong>
-            <strong>
-              Concluídas{" "}
-              <span>
-                {tasksCompleted} de {tasksAmount}
-              </span>
-            </strong>
-          </div>
+          <Stats tasksAmount={tasksAmount} tasksCompleted={tasksCompleted} />
 
           {tasksAmount !== 0 ? (
             <Tasks
