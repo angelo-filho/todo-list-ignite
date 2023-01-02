@@ -7,6 +7,7 @@ interface TaskProps {
   description: string;
   isComplete?: boolean;
   handleToggleIsComplete: (id: string) => void;
+  handleRemoveTask: (id: string) => void;
 }
 
 export function Task({
@@ -14,6 +15,7 @@ export function Task({
   description,
   isComplete = false,
   handleToggleIsComplete,
+  handleRemoveTask,
 }: TaskProps) {
   return (
     <div className={styles.container}>
@@ -30,7 +32,7 @@ export function Task({
         </label>
       </div>
       <p className={`${isComplete ? styles.complete : ""}`}>{description}</p>
-      <button>
+      <button type="button" onClick={() => handleRemoveTask(id)}>
         <Trash size={"16px"} weight="bold" />
       </button>
     </div>

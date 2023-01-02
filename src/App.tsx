@@ -44,8 +44,6 @@ function App() {
   const [tasks, setTasks] = useState(tasks_data);
 
   function toggleTaskCompleteState(id: string) {
-    console.log(id);
-
     const tasksWithNewTaskState = tasks.map((task) => {
       if (task.id === id) {
         task.isComplete = !task.isComplete;
@@ -55,6 +53,12 @@ function App() {
     });
 
     setTasks(tasksWithNewTaskState);
+  }
+
+  function removeTask(id: string) {
+    const taskWithoutTheRemovedOne = tasks.filter((task) => task.id !== id);
+
+    setTasks(taskWithoutTheRemovedOne);
   }
 
   return (
@@ -82,6 +86,7 @@ function App() {
                 description={task.description}
                 isComplete={task.isComplete}
                 handleToggleIsComplete={toggleTaskCompleteState}
+                handleRemoveTask={removeTask}
               />
             ))}
           </div>
