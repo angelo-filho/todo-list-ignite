@@ -8,6 +8,7 @@ import { v4 as uuidV4 } from "uuid";
 import styles from "./styles/app.module.scss";
 import { Empty } from "./components/Empty";
 import { useLocalStorage } from "./hooks/useLocalStorage";
+import { Tasks } from "./components/Tasks";
 
 interface ITask {
   id: string;
@@ -86,18 +87,11 @@ function App() {
           </div>
 
           {tasksAmount !== 0 ? (
-            <div className={styles.tasks}>
-              {tasks.map((task) => (
-                <Task
-                  key={task.id}
-                  id={task.id}
-                  description={task.description}
-                  isComplete={task.isComplete}
-                  handleToggleIsComplete={toggleTaskCompleteState}
-                  handleRemoveTask={removeTask}
-                />
-              ))}
-            </div>
+            <Tasks
+              tasks={tasks}
+              removeTask={removeTask}
+              toggleTaskCompleteState={toggleTaskCompleteState}
+            />
           ) : (
             <Empty />
           )}
