@@ -73,6 +73,8 @@
     font-weight: normal;
     line-height: 140%;
 
+    transition: 0.2s;
+
     &.complete {
       color: var(--gray-300);
       text-decoration: line-through;

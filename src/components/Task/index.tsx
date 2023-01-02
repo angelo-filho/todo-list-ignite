@@ -3,17 +3,29 @@ import { Check, Trash } from "phosphor-react";
 import styles from "./styles.module.scss";
 
 interface TaskProps {
+  id: string;
   description: string;
   isComplete?: boolean;
+  handleToggleIsComplete: (id: string) => void;
 }
 
-export function Task({ description, isComplete = false }: TaskProps) {
+export function Task({
+  id,
+  description,
+  isComplete = false,
+  handleToggleIsComplete,
+}: TaskProps) {
   return (
     <div className={styles.container}>
       <div className={styles.checkbox}>
-        <input type="checkbox" id="check" checked={isComplete} />
+        <input
+          type="checkbox"
+          id={`check-${id}`}
+          checked={isComplete}
+          onChange={() => handleToggleIsComplete(id)}
+        />
         <div />
-        <label htmlFor="check">
+        <label htmlFor={`check-${id}`}>
           <Check size={"1rem"} weight="bold" />
         </label>
       </div>
