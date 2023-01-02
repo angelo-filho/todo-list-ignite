@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Header } from "./components/Header";
-import { Task } from "./components/Task";
 import { TaskForm } from "./components/TaskForm";
 
 import { v4 as uuidV4 } from "uuid";
