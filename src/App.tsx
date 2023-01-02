@@ -6,7 +6,7 @@ import { TaskForm } from "./components/TaskForm";
 import { v4 as uuidV4 } from "uuid";
 
 import styles from "./styles/app.module.scss";
-import { ClipboardText } from "phosphor-react";
+import { Empty } from "./components/Empty";
 
 interface ITask {
   id: string;
@@ -109,13 +109,7 @@ function App() {
               ))}
             </div>
           ) : (
-            <div className={styles.empty}>
-              <ClipboardText size={58} />
-              <div>
-                <strong>Você ainda não tem tarefas cadastradas</strong>
-                <p>Crie tarefas e organize seus itens a fazer</p>
-              </div>
-            </div>
+            <Empty />
           )}
         </div>
       </main>
