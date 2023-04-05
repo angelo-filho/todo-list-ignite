@@ -1,4 +1,4 @@
-(Todo App Banner)[./assets/todoapp.png]
+![Todo App Banner](./assets/todoapp.png)
 
 # Todo App
 
@@ -29,17 +29,17 @@ próprios e componentização foram alguns dos conceitos aplicados nessa aplica�
 
 ### Web Responsivo (Mobile)
 
-<div class="w-72 flex gap-4">
-  <img src="./assets/todo-app/todo-mobile.png" alt="Screen shot do app todo na versão mobile sem tarefas" title="Versão web responsivo (mobile) do app sem tarefas" />
+<p>
+  <img src="./assets/todo-mobile.png" alt="Screen shot do app todo na versão mobile sem tarefas" title="Versão web responsivo (mobile) do app sem tarefas" width="200px"/>
   
-  <img src="./assets/todo-app/todo-mobile-filled.png" alt="Screen shot do app todo na versão mobile com tarefas" title="Versão web responsivo (mobile) do app com tarefas" />
-</div>
+  <img src="./assets/todo-mobile-filled.png" alt="Screen shot do app todo na versão mobile com tarefas" title="Versão web responsivo (mobile) do app com tarefas" width="200px"/>
+</p>
 
 ### Web Desktop
 
-  <img src="./assets/todo-app/todo-desktop.png" alt="Screen shot do app todo na versão desktop sem tarefas" title="Versão web desktop do app desktop sem tarefas" class="w-[620px]"/>
+  <img src="./assets/todo-desktop.png" alt="Screen shot do app todo na versão desktop sem tarefas" title="Versão web desktop do app desktop sem tarefas" width="620px"/>
   
-  <img src="./assets/todo-app/todo-desktop-filled.png" alt="Screen shot do app todo na versão desktop com tarefas" title="Versão web desktop do app desktop com tarefas" class="w-[620px]"/>
+  <img src="./assets/todo-desktop-filled.png" alt="Screen shot do app todo na versão desktop com tarefas" title="Versão web desktop do app desktop com tarefas" width="620px">
 
 ### Pré-requisitos
 
