@@ -41,6 +41,8 @@ próprios e componentização foram alguns dos conceitos aplicados nessa aplica�
   
   <img src="./assets/todo-desktop-filled.png" alt="Screen shot do app todo na versão desktop com tarefas" title="Versão web desktop do app desktop com tarefas" width="620px">
 
+## Como executar o projeto
+
 ### Pré-requisitos
 
 Para rodar o projeto, você precisa ter em sua máquina as seguintes ferramentas:
